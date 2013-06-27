@@ -1,7 +1,7 @@
 
 public static float SPACING = PI / 29.0f;
 public static float SIZE = 100f;
-public static float RADIAL_SPACING = 0.10;
+public static float RADIAL_SPACING = 0.10f;
 public static float SPEED_FACTOR = 0.3f;
 float[] rotation_offset = {0f, PI, -HALF_PI, HALF_PI, 3 / 2f * PI};
 float[] rotations = {0.15f, -0.07f, 0.15f, -0.08f, 0.12f};
