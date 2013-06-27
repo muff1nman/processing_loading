@@ -1,6 +1,8 @@
 import processing.core.*;
 
 
+public class Loading extends PApplet {
+
 public static float SPACING = PI / 20.0f;
 public static float SIZE = 50f;
 public static float RADIAL_SPACING = 0.10f;
@@ -13,8 +15,6 @@ float[] randoms = {2, 1, 10, -7, 3};
 float[] current_direction = {0f,0f,0f,0f,0f};
 int[] colors = {color(233, 233, 0), color(233, 0, 0), color(0, 233, 0), color(0, 0, 233), color(0, 233, 233) };
 float time_element = 0;
-
-public class Loading extends PApplet {
 
 public void setup() {
   frameRate(60);
