@@ -1,23 +1,25 @@
 
 public static float SPACING = PI / 29.0f;
-public static float SIZE = 100f;
+public static float SIZE = 50f;
 public static float RADIAL_SPACING = 0.10f;
 public static float SPEED_FACTOR = 0.3f;
 float[] rotation_offset = {0f, PI, -HALF_PI, HALF_PI, 3 / 2f * PI};
-float[] rotations = {0.15f, -0.07f, 0.15f, -0.08f, 0.12f};
-int[] num_circles = {5,6,10,39,5};
-float[] circle_size = {3f, 4f, 3f, 6f, 2f};
+float[] rotations = {0.15f, -0.11f, -0.25f, -0.08f, 0.12f};
+int[] num_circles = {5,6,10,15,6};
+float[] circle_size = {3f, 4f, 3f, 2.5f, 2f};
 
 
 public void setup() {
-  frameRate(30);
-  size( 500, 500 );
+  frameRate(60);
+  if (frame != null) {
+    frame.setResizable(true);
+  }
 }
 
 public void draw() {
   drawBackground();
   float radius = SIZE;
-  for( int i = 0; i < rotation_offset.length; ++i ) {
+  for( int i = 0; i < rotation_offset.length && radius > circle_size[i]; ++i ) {
     drawCircles( radius, rotation_offset[i], num_circles[i], circle_size[i]);
     radius -= circle_size[i] * 2 + SIZE * RADIAL_SPACING;
   }
