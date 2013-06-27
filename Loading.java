@@ -1,3 +1,5 @@
+import processing.core.*;
+
 
 public static float SPACING = PI / 20.0f;
 public static float SIZE = 50f;
@@ -12,6 +14,7 @@ float[] current_direction = {0f,0f,0f,0f,0f};
 int[] colors = {color(233, 233, 0), color(233, 0, 0), color(0, 233, 0), color(0, 0, 233), color(0, 233, 233) };
 float time_element = 0;
 
+public class Loading extends PApplet {
 
 public void setup() {
   frameRate(60);
@@ -106,4 +109,6 @@ public void drawCircles( float radius, float rotation_offset, int number_circles
 public void drawCircle( float radius, float x, float y ) {
   ellipseMode(RADIUS);
   ellipse(x,y,radius,radius);
+}
+
 }
