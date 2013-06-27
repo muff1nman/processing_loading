@@ -4,3 +4,4 @@ bin
 *.applet
 .classpath
 .project
+bin
