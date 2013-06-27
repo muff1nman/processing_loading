@@ -50,7 +50,7 @@ public void drawCircles( float radius, float rotation_offset, int number_circles
   // The small subtraction on the end is to deal with float point errors on
   // rounding
   float radians_in_arc = number_circles * ((circle_radius * 2f)/radius + SPACING);
-  float radians_between_circles = radians_in_arc / (float) segments_between_circles - 0.1;
+  float radians_between_circles = (float) (radians_in_arc / (float) segments_between_circles - 0.1);
   float arc_length = radians_in_arc * radius;
 
   float degree = rotation_offset;
