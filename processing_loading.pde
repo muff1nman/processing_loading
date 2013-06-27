@@ -1,8 +1,12 @@
 
 public static int NUMBER_CIRCLES = 5;
 public static float TRAIL_ARC_SIZE = HALF_PI;
-public static float SPACING = PI / 12.0f;
-public static float SIZE = 50f;
+public static float SPACING = PI / 29.0f;
+public static float SIZE = 100f;
+public static float RADIAL_SPACING = 20f;
+public static float SPEED_FACTOR = 0.3;
+float[] rotation_offset = {0f, PI, -HALF_PI, HALF_PI, 3 / 2f * PI};
+float[] rotations = {0.15f, -0.07f, 0.15f, -0.08, 0.12};
 
 
 public void setup() {
@@ -12,10 +16,17 @@ public void setup() {
 
 public void draw() {
   drawBackground();
-  float[] rotation_offset = {0f, 0f, 0f};
-  drawCircles( SIZE, rotation_offset[0] -1 );
-  drawCircles( SIZE - 10f, rotation_offset[1], 1 );
-  drawCircles( SIZE - 20f, rotation_offset[2], -1 );
+  for( int i = 0; i < rotation_offset.length; ++i ) {
+    drawCircles( SIZE - RADIAL_SPACING  * i, rotation_offset[i]);
+  }
+  rotation_offset = rotateCircles( rotation_offset, rotations );
+}
+
+public float[] rotateCircles( float[] rotation_offsets, float[] rotations ) {
+  for( int i = 0; i < rotation_offsets.length; ++i ) {
+    rotation_offsets[i] = (rotation_offsets[i] + rotations[i] * SPEED_FACTOR) % (2 * PI);
+  }
+  return rotation_offsets;
 }
 
 /** 
@@ -25,15 +36,11 @@ public void drawBackground() {
   background( 50 );
 }
 
-public void drawCircles( float radius, float rotation_offset ) {
-  drawCircles( radius, rotation_offset, 1 );
-}
-
 /**
  * Draw some circles at some radius from the center of the display.
  * Rotate clockwise unless the rotation_direction is negative
  */
-public void drawCircles( float radius, float rotation_offset, int rotation_direction) {
+public void drawCircles( float radius, float rotation_offset) {
   float center_x = width / 2.0f;
   float center_y = height / 2.0f;
   float circle_x, circle_y;
@@ -49,8 +56,6 @@ public void drawCircles( float radius, float rotation_offset, int rotation_direc
     circle_y = (float) (center_y + radius * Math.sin( degree ));
     drawCircle( circle_radius, circle_x, circle_y );
   }
-
-  rotation_offset = (rotation_offset + 0.1 * rotation_direction / Math.abs(rotation_direction )) % (2 * PI);
 
 }
 
