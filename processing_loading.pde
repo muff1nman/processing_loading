@@ -14,10 +14,13 @@ float time_element = 0;
 
 
 public void setup() {
-  frameRate(60);
-  if (frame != null) {
-    frame.setResizable(true);
-  }
+  /*
+   *frameRate(60);
+   *if (frame != null) {
+   *  frame.setResizable(true);
+   *}
+   */
+  size(200,200);
 }
 
 public void draw() {
@@ -49,7 +52,8 @@ public float[] rotateCircles( float[] rotation_offsets, float[] rotations, float
  * Draw a background.  This ensures that the circles are cleared each round
  */
 public void drawBackground() {
-  background( 50 );
+  //background( 150 );
+  background(0, 0, 0, 0);
 }
 
 public void drawGuide( float radius ) {
@@ -82,18 +86,17 @@ public void drawCircles( float radius, float rotation_offset, int number_circles
     circle_y = (float) (center_y + radius * Math.sin( degree ));
     fill(0);
     int picked_index = (int)((current_direction + .05f) / .1f * number_circles); //+ number_circles / 2.0f);
-    /*
-     *if (i == 0 && number_circles == 5) {
-     *  System.out.println("current_Direction " + current_direction);
-     *  System.out.println("dir " + picked_index);
-     *}
-     */
+    //if (i == 0 && number_circles == 5) {
+      //System.out.println("current_Direction " + current_direction);
+      //System.out.println("dir " + picked_index);
+    //}
     float percent_trans = Math.abs(picked_index - i) / (float) (number_circles);
     if( percent_trans > 1 ) {
       percent_trans = 1;
     }
     int transparency = 255 - (int) (percent_trans * 255);
-    fill(colors, transparency);
+    //fill(colors, transparency);
+    fill(colors);
     drawCircle( circle_radius, circle_x, circle_y );
     degree += radians_between_circles;
   }
